@@ -6,9 +6,6 @@ import { DeporteTipo } from "./DeporteTipo";
 export class Deporte {
     @PrimaryGeneratedColumn()
     id: number;
-    
-    @Column({ type: "varchar", length: 255 })
-    nombre: string;
 
     @Column({ type: "int"})
     club_id: number;

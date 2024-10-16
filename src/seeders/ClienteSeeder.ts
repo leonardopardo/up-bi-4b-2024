@@ -1,5 +1,4 @@
 import { DataSource } from "typeorm";
-import { getDataSource } from "../MyDataSource";
 import { Cliente } from "../entities/Cliente";
 import { ClienteFactory } from "../factories/ClienteFactory";
 

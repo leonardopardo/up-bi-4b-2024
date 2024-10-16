@@ -1,5 +1,4 @@
 import { DataSource } from "typeorm";
-import { getDataSource } from "../MyDataSource";
 import { CategoriaFactory } from "../factories/CategoriaFactory";
 import { Categoria } from "../entities/Categoria";
 
@@ -13,6 +12,6 @@ export class CategoriaSeeder {
 
     await categoriaRepository.save(categorias);
 
-    console.log(`${cantidad} categorias seeded successfully`);
+    console.log(`${cantidad} categorías seeded successfully`);
   }
 }

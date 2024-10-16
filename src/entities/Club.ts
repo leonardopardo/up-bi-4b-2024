@@ -17,6 +17,15 @@ export class Club {
   @Column({ type: "varchar", length: 255 })
   nombre: string;
 
+  @Column({ type: "varchar", length: 255 })
+  ciudad: string;
+
+  @Column({ type: "int" })
+  fundacion: number;
+
+  @Column({ type: "varchar", length: 255 })
+  estadio: string;
+
   @CreateDateColumn()
   created_at: Date;
 
