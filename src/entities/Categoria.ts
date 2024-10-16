@@ -5,6 +5,7 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from "typeorm";
 import { Item } from "./Item";
 
@@ -13,7 +14,7 @@ export class Categoria {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true })
   categoria_id: number;
 
   @Column({ type: "varchar", length: 255 })
@@ -30,6 +31,9 @@ export class Categoria {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 
   @OneToMany(() => Categoria, (categoria) => categoria.categoria_id)
   categoria: Categoria;

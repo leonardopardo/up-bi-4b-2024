@@ -65,8 +65,8 @@ class App {
 
   private async initializeDatabase() {
     // initialize database
-    const PostgresDataSource: DataSource = getDataSource();
-    const db = await PostgresDataSource.initialize();
+    const ds: DataSource = getDataSource();
+    const db = await ds.initialize();
     console.log(
       `+ Database connected [${
         db.options.database
