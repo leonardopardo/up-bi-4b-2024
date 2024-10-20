@@ -9,8 +9,6 @@ export class ClienteFactory {
     c.apellido = faker.person.lastName();
     c.email = faker.internet.email().toLowerCase();
     c.password = bcrypt.hashSync(faker.internet.password(), 10);
-    c.created_at = new Date();
-    c.updated_at = new Date();
 
     return c;
   }

@@ -6,6 +6,7 @@ import { ClienteSeeder } from "./ClienteSeeder";
 import { ClubSeeder } from "./ClubSeeder";
 import { DeporteTipoSeeder } from "./DeporteTipoSeeder";
 import { DeporteSeeder } from "./DeporteSeeder";
+import { PredioSeeder } from "./PredioSeeder";
 
 export class Seeder {
   private ds: DataSource;
@@ -21,7 +22,8 @@ export class Seeder {
       //await ClienteSeeder.seed(this.ds, 100);
       //await ClubSeeder.seed(this.ds);
       //await DeporteTipoSeeder.seed(this.ds);
-      await  DeporteSeeder.seed(this.ds);
+      //await  DeporteSeeder.seed(this.ds);
+      //await PredioSeeder.seed(this.ds);
     } catch (error) {
       console.error("Error during seeding: ", error);
     } finally {
