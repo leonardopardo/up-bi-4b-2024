@@ -13,13 +13,10 @@ export class EstadoTransaccion {
   id: number;
 
   @Column({ type: "varchar", length: 255 })
-  nombre: string;
+  codigo: string;
 
   @Column({ type: "text", nullable: true })
   descripcion: string;
-
-  @Column({ type: "text", nullable: true })
-  observaciones: string;
 
   @CreateDateColumn()
   created_at: Date;

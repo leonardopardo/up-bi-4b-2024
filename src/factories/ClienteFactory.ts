@@ -5,8 +5,8 @@ import * as bcrypt from "bcryptjs";
 export class ClienteFactory {
   static create(): Cliente {
     const c = new Cliente();
-    c.nombre = faker.person.firstName();
-    c.apellido = faker.person.lastName();
+    c.nombre = faker.person.firstName().toLocaleLowerCase();
+    c.apellido = faker.person.lastName().toLocaleLowerCase();
     c.email = faker.internet.email().toLowerCase();
     c.password = bcrypt.hashSync(faker.internet.password(), 10);
 

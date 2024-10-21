@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -44,8 +45,10 @@ export class ClienteVisita {
   deleted_at: Date;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.id)
+  @JoinColumn({ name: "cliente_id" })
   cliente: Cliente;
 
   @ManyToOne(() => Visita, (visita) => visita.id)
+  @JoinColumn({ name: "visita_id" })
   visita: Visita;
 }

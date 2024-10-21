@@ -37,7 +37,6 @@ class App {
 
     // initialize resources
     this.initializeDatabase();
-    this.initializeSeeders();
   }
 
   private initializeSeeders() {
@@ -72,6 +71,7 @@ class App {
         db.options.database
       }]- ${db.options.type.toUpperCase()} v${db.driver.version}`
     );
+    this.initializeSeeders();
   }
 
   public listen(): void {

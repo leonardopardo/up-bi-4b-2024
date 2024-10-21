@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  JoinColumn,
 } from "typeorm";
 import { Deporte } from "./Deporte";
 import { Ticket } from "./Ticket";
@@ -37,6 +38,7 @@ export class Evento {
   updated_at: Date;
 
   @ManyToOne(() => Deporte, (deporte) => deporte.id)
+  @JoinColumn({ name: "deporte_id" })
   deporte: Deporte;
 
   @OneToMany(() => Ticket, (ticket) => ticket.evento)

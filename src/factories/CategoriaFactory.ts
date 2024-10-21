@@ -6,8 +6,6 @@ export class CategoriaFactory {
     categoria.codigo = faker.string.alphanumeric(5).toUpperCase();
     categoria.nombre = faker.commerce.department();
     categoria.descripcion = faker.lorem.sentence();
-    categoria.created_at = new Date();
-    categoria.updated_at = new Date();
 
     return categoria;
   }

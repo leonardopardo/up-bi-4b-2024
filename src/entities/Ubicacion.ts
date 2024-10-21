@@ -3,30 +3,28 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Club } from "./Club";
+import { Ticket } from "./Ticket";
 import { Zona } from "./Zona";
 
 @Entity()
-export class Predio {
+export class Ubicacion {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: "int" })
-  club_id: number;
-
-  @Column({ type: "varchar", length: 255 })
-  nombre: string;
-
-  @Column({ type: "text", nullable: true })
-  descripcion: string;
+  zona_id: number;
 
   @Column({ type: "int" })
-  capacidad: number;
+  fila: number;
+
+  @Column({ type: "int" })
+  numero: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -37,9 +35,10 @@ export class Predio {
   @DeleteDateColumn()
   deleted_at: Date;
 
-  @ManyToOne(() => Club, (club) => club.id)
-  club: Club;
+  @ManyToOne(() => Zona, (zona) => zona.ubicaciones)
+  @JoinColumn({ name: "zona_id" })
+  zona: Zona;
 
-  @OneToMany(() => Zona, (zona) => zona.predio)
-  zonas: Zona[];
+  @OneToMany(() => Ticket, (ticket) => ticket.ubicacion)
+  tickets: Ticket[];
 }

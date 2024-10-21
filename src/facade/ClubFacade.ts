@@ -5,6 +5,6 @@ export class ClubFacade {
   private static service: ClubService = new ClubService();
 
   static async find(): Promise<Club[]> {
-    return ClubFacade.service.find();
+    return await ClubFacade.service.find();
   }
 }

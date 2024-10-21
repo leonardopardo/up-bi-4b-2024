@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -41,6 +42,7 @@ export class Comprobante {
   deleted_at: Date;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.comprobantes)
+  @JoinColumn({ name: "cliente_id" })
   cliente: Cliente;
 
   @OneToMany(() => Transaccion, (transaccion) => transaccion.comprobante)

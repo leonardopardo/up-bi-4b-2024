@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  JoinColumn,
 } from "typeorm";
 import { Club } from "./Club";
 
@@ -13,6 +14,9 @@ import { Club } from "./Club";
 export class Visita {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ type: "int" })
+  club_id: number;
 
   @Column({ type: "varchar", length: 255 })
   codigo: string;
@@ -30,6 +34,7 @@ export class Visita {
   capacidad: number;
 
   @ManyToOne(() => Club, (club) => club.visitas)
+  @JoinColumn({ name: "club_id" })
   club: Club;
 
   @CreateDateColumn()

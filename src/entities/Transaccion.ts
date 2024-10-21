@@ -4,10 +4,12 @@ import {
   Column,
   ManyToOne,
   CreateDateColumn,
+  JoinColumn,
 } from "typeorm";
 import { Cliente } from "./Cliente";
 import { Ticket } from "./Ticket";
 import { Comprobante } from "./Comprobante";
+import { TipoComprobante } from "./TipoComprobante";
 
 @Entity()
 export class Transaccion {
@@ -29,18 +31,31 @@ export class Transaccion {
   @Column({ type: "int" })
   estado_transaccion_id: number;
 
+  @Column({ type: "int" })
+  ticket_id: number;
+
   @Column({ type: "decimal", precision: 10, scale: 2 })
   monto: number;
 
   @CreateDateColumn()
   fecha_transaccion: Date;
 
+  @ManyToOne(() => Ticket, (ticket) => ticket.id)
+  @JoinColumn({ name: "ticket_id" })
+  ticket: Ticket;
+
   @ManyToOne(() => Cliente, (cliente) => cliente.transacciones)
+  @JoinColumn({ name: "cliente_id" })
   cliente: Cliente;
 
   @ManyToOne(() => Comprobante, (comprobante) => comprobante.transacciones)
+  @JoinColumn({ name: "comprobante_id" })
   comprobante: Comprobante;
 
-  @ManyToOne(() => Ticket, (ticket) => ticket.id)
-  ticket: Ticket;
+  @ManyToOne(
+    () => TipoComprobante,
+    (tipoComprobante) => tipoComprobante.transacciones
+  )
+  @JoinColumn({ name: "comprobante_tipo_id" })
+  comprobante_tipo: TipoComprobante;
 }

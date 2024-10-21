@@ -18,9 +18,6 @@ export class MedioPago {
   @Column({ type: "text", nullable: true })
   descripcion: string;
 
-  @Column({ type: "text", nullable: true })
-  observaciones: string;
-
   @CreateDateColumn()
   created_at: Date;
 

@@ -1,68 +1,62 @@
 import { DataSource } from "typeorm";
-import { Predio } from "../entities/Predio";
 import { faker } from "@faker-js/faker";
 import { Zona } from "../entities/Zona";
+import { Club } from "../entities/Club";
 
 export class ZonaSeeder {
   static async seed(ds: DataSource): Promise<void> {
     const zonaRepository = ds.getRepository(Zona);
-    const predioRepository = ds.getRepository(Predio);
+    const clubRepository = ds.getRepository(Club);
 
-    predioRepository.delete({});
+    zonaRepository.delete({});
 
-    const cotas: any = await zonaRepository.query(
-      `select min(id) as min, max(id) as max from predio`
-    );
+    const clubes: Club[] = await clubRepository.find();
 
-    const { min, max } = cotas[0];
+    const zonas: Zona[] = [];
 
-    // await predioRepository.delete({});
+    for (let i = 0; i < clubes.length; i++) {
+      const ps: Zona[] = [];
 
-    // const zonas: Zona[] = [];
+      const z1 = new Zona();
+      z1.nombre = "Zona 1";
+      z1.descripcion = "Platea Alta Norte";
+      z1.capacidad = 100; // faker.number.int({ min: , max: 50000 });
+      z1.club = clubes[i];
 
-    // for (let i = min; i <= max; i++) {
-    //   const ps: Zona[] = [];
+      const z2 = new Zona();
+      z2.nombre = "Zona 2";
+      z2.descripcion = "Platea Alta Sur";
+      z2.capacidad = 100; // faker.number.int({ min: 5000, max: 15000 });
+      z2.club = clubes[i];
 
-    //   const z1 = new Zona();
-    //   z1.predio_id = i;
-    //   z1.nombre = "Zona 1";
-    //   z1.descripcion = "Platea Alta Norte";
-    //   z1.capacidad = faker.number.int({ min: 20000, max: 50000 });
+      const z3 = new Zona();
+      z3.nombre = "Zona 3";
+      z3.descripcion = "Platea Baja Norte";
+      z3.capacidad = 100; // faker.number.int({ min: 5000, max: 15000 });
+      z3.club = clubes[i];
 
-    //   const z2 = new Zona();
-    //   z2.predio_id = i;
-    //   z2.nombre = "Zona 2";
-    //   z2.descripcion = "Platea Alta Sur";
-    //   z2.capacidad = faker.number.int({ min: 5000, max: 15000 });
+      const z4 = new Zona();
+      z4.nombre = "Zona 4";
+      z4.descripcion = "Platea Baja Sur";
+      z4.capacidad = 100; // faker.number.int({ min: 5000, max: 15000 });
+      z4.club = clubes[i];
 
-    //   const z3 = new Zona();
-    //   z3.predio_id = i;
-    //   z3.nombre = "Zona 3";
-    //   z3.descripcion = "Platea Baja Norte";
-    //   z3.capacidad = faker.number.int({ min: 5000, max: 15000 });
+      const z5 = new Zona();
+      z5.club = clubes[i];
+      z5.nombre = "Zona 5";
+      z5.descripcion = "Campo";
+      z5.capacidad = 100; // faker.number.int({ min: 5000, max: 15000 });
 
-    //   const z3 = new Zona();
-    //   z3.predio_id = i;
-    //   z3.nombre = "Zona 4";
-    //   z3.descripcion = "Platea Baja Sur";
-    //   z3.capacidad = faker.number.int({ min: 5000, max: 15000 });
+      const z6 = new Zona();
+      z6.nombre = "Zona 6";
+      z6.descripcion = "Popular";
+      z6.capacidad = 100; // faker.number.int({ min: 5000, max: 15000 });
+      z6.club = clubes[i];
 
-    //   const z3 = new Zona();
-    //   z3.predio_id = i;
-    //   z3.nombre = "Zona 5";
-    //   z3.descripcion = "Campo";
-    //   z3.capacidad = faker.number.int({ min: 5000, max: 15000 });
+      zonas.push(z1, z2, z3, z4, z5, z6);
+    }
 
-    //   const z3 = new Zona();
-    //   z3.predio_id = i;
-    //   z3.nombre = "Zona 6";
-    //   z3.descripcion = "Popular";
-    //   z3.capacidad = faker.number.int({ min: 5000, max: 15000 });
-
-    //   zonas.push(z1, z2, z3, z4, z5, z6);
-    // }
-
-    // await zonaRepository.save(zonas);
-    // console.log("Predio seeding complete!");
+    await zonaRepository.save(zonas);
+    console.log("Zonas seeding complete!");
   }
 }

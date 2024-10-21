@@ -29,6 +29,6 @@ export class EstadoTicket {
   @DeleteDateColumn()
   deleted_at: Date;
 
-  @OneToMany(() => Ticket, (ticket) => ticket.estado)
+  @OneToMany(() => Ticket, (ticket) => ticket.estado_ticket)
   tickets: Ticket[];
 }

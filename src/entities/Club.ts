@@ -8,6 +8,8 @@ import {
 } from "typeorm";
 import { Visita } from "./Visita";
 import { Deporte } from "./Deporte";
+import { Zona } from "./Zona";
+import { Item } from "./Item";
 
 @Entity()
 export class Club {
@@ -35,6 +37,12 @@ export class Club {
   @OneToMany(() => Deporte, (deporte) => deporte.club)
   deportes: Deporte[];
 
+  @OneToMany(() => Zona, (zona) => zona.club)
+  zonas: Zona[];
+
   @OneToMany(() => Visita, (visita) => visita.club)
   visitas: Visita[];
+
+  @OneToMany(() => Item, (item) => item.club)
+  items: Item[];
 }

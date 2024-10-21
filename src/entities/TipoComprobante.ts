@@ -3,9 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Transaccion } from "./Transaccion";
 
 @Entity()
 export class TipoComprobante {
@@ -18,9 +20,6 @@ export class TipoComprobante {
   @Column({ type: "text", nullable: true })
   descripcion: string;
 
-  @Column({ type: "text", nullable: true })
-  observacion: string;
-
   @CreateDateColumn()
   created_at: Date;
 
@@ -29,4 +28,7 @@ export class TipoComprobante {
 
   @DeleteDateColumn()
   deleted_at: Date;
+
+  @OneToMany(() => Transaccion, (transaccion) => transaccion.comprobante_tipo)
+  transacciones: Transaccion[];
 }

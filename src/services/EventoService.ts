@@ -1,20 +1,20 @@
 import { DataSource, Repository } from "typeorm";
+import { Evento } from "../entities/Evento";
 import { getDataSource } from "../MyDataSource";
-import { Club } from "../entities/Club";
 
-export class ClubService {
-  private repository: Repository<Club>;
+export class EventoService {
+  private repository: Repository<Evento>;
 
   constructor() {
     const ds: DataSource = getDataSource();
-    this.repository = ds.manager.getRepository(Club);
+    this.repository = ds.manager.getRepository(Evento);
   }
 
-  async find(): Promise<Club[]> {
+  async find(): Promise<Evento[]> {
     return this.repository.find();
   }
 
-  async findById(id: number): Promise<Club> {
+  async findById(id: number): Promise<Evento> {
     return await this.repository.find({ where: { id } })[0];
   }
 }

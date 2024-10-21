@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Predio } from "../entities/Predio";
+import { Predio } from "../entities/Ubicacion";
 import { Club } from "../entities/Club";
 import { faker } from "@faker-js/faker";
 
