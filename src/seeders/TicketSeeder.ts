@@ -81,13 +81,13 @@ export class TicketSeeder {
           ticket.created_at = new Date();
           ticket.updated_at = new Date();
 
-          tickets.push(ticket);
+          ticketRepository.save(ticket);
         }
       }
     }
 
     // Guardar todos los tickets generados en la base de datos
-    await ticketRepository.save(tickets);
+    // await ticketRepository.save(tickets);
 
     console.log(
       `${tickets.length} tickets seeded successfully for all events.`

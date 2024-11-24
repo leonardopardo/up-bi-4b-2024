@@ -36,7 +36,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
 
     // initialize resources
-    this.initializeDatabase();
+    // this.initializeDatabase();
   }
 
   private initializeSeeders() {

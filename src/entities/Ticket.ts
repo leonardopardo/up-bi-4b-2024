@@ -32,6 +32,9 @@ export class Ticket {
   @Column({ type: "int" })
   ubicacion_id: number;
 
+  @Column({ type: "varchar" })
+  codigo: string;
+
   @CreateDateColumn()
   created_at: Date;
 

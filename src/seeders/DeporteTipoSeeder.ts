@@ -10,15 +10,7 @@ export class DeporteTipoSeeder {
     // Lista de deportes
     const deportes: Partial<DeporteTipo>[] = [
       { nombre: "Fútbol" },
-      { nombre: "Baloncesto" },
-      { nombre: "Voleibol" },
-      { nombre: "Hockey sobre césped" },
-      { nombre: "Natación" },
-      { nombre: "Tenis" },
-      { nombre: "Rugby" },
-      { nombre: "Handball" },
-      { nombre: "Atletismo" },
-      { nombre: "Boxeo" },
+      { nombre: "Futsal" }
     ];
 
     await deporteRepository.save(deportes);

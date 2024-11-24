@@ -1,17 +1,16 @@
 import { DataSource } from "typeorm";
-import { CategoriaFactory } from "../factories/CategoriaFactory";
 import { Categoria } from "../entities/Categoria";
+import { CategoriasMock } from "./lists/CategoriasMock";
 
 export class CategoriaSeeder {
-  static async seed(ds: DataSource, cantidad: number): Promise<void> {
+  static async seed(ds: DataSource): Promise<void> {
     const categoriaRepository = ds.getRepository(Categoria);
-
-    await categoriaRepository.delete({});
-
-    const categorias = CategoriaFactory.createMany(cantidad);
+    //await categoriaRepository.delete({});
+    
+    const categorias: Partial<Categoria>[] = CategoriasMock;
 
     await categoriaRepository.save(categorias);
 
-    console.log(`${cantidad} categorías seeded successfully`);
+    console.log(`${categorias.length} categorías seeded successfully`);
   }
 }

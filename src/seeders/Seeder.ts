@@ -27,11 +27,12 @@ export class Seeder {
   async run() {
     try {
       // await this.ds.initialize();
-      // await CategoriaSeeder.seed(this.ds, 50);
+      // await CategoriaSeeder.seed(this.ds);
       // await ClubSeeder.seed(this.ds);
-      // await ItemSeeder.seed(this.ds, 1000);
+      // await ItemSeeder.seed(this.ds);
       // await ZonaSeeder.seed(this.ds);
-      // await ClienteSeeder.seed(this.ds, 100);
+      // await UbicacionSeeder.seed(this.ds);
+      // await ClienteSeeder.seed(this.ds, 5000);
       // await DeporteTipoSeeder.seed(this.ds);
       // await DeporteSeeder.seed(this.ds);
       // await EstadoTicketSeeder.seed(this.ds);
@@ -39,13 +40,11 @@ export class Seeder {
       // await MedioPagoSeeder.seed(this.ds);
       // await TipoComprobanteSeeder.seed(this.ds);
       // await EventoSeeder.seed(this.ds);
-      // await UbicacionSeeder.seed(this.ds);
       // await TicketSeeder.seed(this.ds);
     } catch (error) {
       console.error("Error during seeding: ", error);
     } finally {
       console.log("Seeding complete!");
-      process.exit(0);
     }
   }
 }

@@ -9,7 +9,7 @@ export class UbicacionSeeder {
     const zonaRepository = ds.getRepository(Zona);
 
     // Borrar ubicaciones existentes
-    await ubicacionRepository.delete({});
+    // await ubicacionRepository.delete({});
 
     // Obtener todas las zonas
     const zonas: Zona[] = await zonaRepository.find();
@@ -18,24 +18,22 @@ export class UbicacionSeeder {
       throw new Error("No se encontraron zonas para generar ubicaciones.");
     }
 
-    const ubicaciones: Ubicacion[] = [];
+    let ubicaciones: number = 0;
 
     // Para cada zona, generar 100 ubicaciones
     for (const zona of zonas) {
-      for (let fila = 1; fila <= 10; fila++) {
-        for (let numero = 1; numero <= 10; numero++) {
+      for (let fila = 1; fila <= 20; fila++) {
+        for (let numero = 1; numero <= 100; numero++) {
           const ubicacion = new Ubicacion();
           ubicacion.zona = zona;
           ubicacion.fila = fila;
           ubicacion.numero = numero;
-          ubicaciones.push(ubicacion);
+          await ubicacionRepository.save(ubicacion);
+          ubicaciones++;
         }
       }
     }
 
-    // Guardar las ubicaciones generadas en la base de datos
-    await ubicacionRepository.save(ubicaciones);
-
-    console.log(`${ubicaciones.length} ubicaciones creadas exitosamente.`);
+    console.log(`${ubicaciones} ubicaciones creadas exitosamente.`);
   }
 }

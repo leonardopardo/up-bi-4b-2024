@@ -10,7 +10,7 @@ export class DeporteSeeder {
     const clubRepository = ds.getRepository(Club);
 
     // Limpiar tabla deportes para evitar duplicados
-    await deporteRepository.delete({});
+    // await deporteRepository.delete({});
 
     // Obtener todos los tipos de deportes
     const deporteTipos = await deporteTipoRepository.find();
@@ -19,27 +19,19 @@ export class DeporteSeeder {
     const clubes = await clubRepository.find();
 
     // Asociar deportes a clubes y tipos de deportes
-    const deportes: Partial<Deporte>[] = [];
+    // const deportes: Partial<Deporte>[] = [];
 
     for (const club of clubes) {
-      // Tomamos aleatoriamente entre 1 y 3 tipos de deportes para cada club
-      const numeroDeportes = Math.floor(Math.random() * 3) + 1;
-      const deportesSeleccionados = deporteTipos
-        .sort(() => 0.5 - Math.random())
-        .slice(0, numeroDeportes);
-
-      for (const deporteTipo of deportesSeleccionados) {
-        deportes.push({
-          club_id: club.id,
-          deporte_tipo_id: deporteTipo.id,
-          created_at: new Date(),
-          updated_at: new Date(),
-        });
+      for (const deporteTipo of deporteTipos) {
+        const d = new Deporte();
+        d.club_id = club.id;
+        d.deporte_tipo_id = deporteTipo.id;
+        await deporteRepository.save(d);
       }
     }
 
     // Guardar deportes en la base de datos
-    await deporteRepository.save(deportes);
+    // await deporteRepository.save(deportes);
 
     console.log("Deportes insertados exitosamente");
   }
