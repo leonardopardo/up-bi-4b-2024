@@ -19,9 +19,10 @@ export class MedioPagoService {
   }
 
   async findRandom(): Promise<MedioPago> {
-    return await this.repository.query(
-      "SELECT * FROM medio_pago ORDER BY RAND() LIMIT 1;"
-    )[0];
+    const result = await this.repository.query(
+      "SELECT * FROM medio_pago ORDER BY RANDOM() LIMIT 1;"
+    );
+    return result[0];
   }
 
   async store(medioPago: MedioPago): Promise<MedioPago> {

@@ -21,7 +21,6 @@ export class TicketSeeder {
   static async seed(ds: DataSource): Promise<void> {
     const eventos: Evento[] = await EventoFacade.find();
     const zonas: Zona[] = await ZonaFacade.find();
-
     for (const evento of eventos) {
       for (const zona of zonas) {
         const ubicaciones: Ubicacion[] = await UbicacionFacade.findByZone(

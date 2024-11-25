@@ -39,7 +39,7 @@ export class Seeder {
       // await MedioPagoSeeder.seed(this.ds);
       // await TipoComprobanteSeeder.seed(this.ds);
       // await EventoSeeder.seed(this.ds);
-      // await TicketSeeder.seed(this.ds);
+      await TicketSeeder.seed(this.ds);
     } catch (error) {
       console.error("Error during seeding: ", error);
     } finally {

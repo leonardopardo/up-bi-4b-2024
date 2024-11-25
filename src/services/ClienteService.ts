@@ -19,8 +19,10 @@ export class ClienteService {
   }
 
   async findRandom(): Promise<Cliente> {
-    return await this.repository.query(
-      "SELECT * FROM cliente ORDER BY RAND() LIMIT 1"
-    )[0];
+    const result = await this.repository.query(
+      "SELECT * FROM cliente ORDER BY RANDOM() LIMIT 1"
+    );
+
+    return result[0];
   }
 }

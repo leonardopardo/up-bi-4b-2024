@@ -23,8 +23,10 @@ export class UbicacionService {
   }
 
   async findRandom(): Promise<Ubicacion> {
-    return await this.repository.query(
-      "SELECT * FROM ubicacion ORDER BY RAND() LIMIT 1"
-    )[0];
+    const result = await this.repository.query(
+      "SELECT * FROM ubicacion ORDER BY RANDOM() LIMIT 1"
+    );
+
+    return result[0];
   }
 }

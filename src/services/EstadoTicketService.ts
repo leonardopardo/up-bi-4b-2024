@@ -19,8 +19,50 @@ export class EstadoTicketService {
   }
 
   async findRandom(): Promise<EstadoTicket> {
-    const count = await this.repository.count();
-    const random = Math.floor(Math.random() * count);
-    return await this.repository.find()[random];
+    const result = await this.repository.query(
+      `SELECT *  FROM (
+          SELECT * FROM estado_ticket
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+          UNION ALL
+          SELECT * FROM estado_ticket WHERE id = 4
+        ) AS weighted_tickets
+        ORDER BY RANDOM()
+        LIMIT 1;`
+    );
+
+    return result[0];
   }
 }

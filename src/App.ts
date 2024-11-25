@@ -71,7 +71,7 @@ class App {
         process.env.DB_HOST
       } - ${db.options.type.toUpperCase()} v${db.driver.version}`
     );
-    // this.initializeSeeders();
+    this.initializeSeeders();
   }
 
   public listen(): void {
