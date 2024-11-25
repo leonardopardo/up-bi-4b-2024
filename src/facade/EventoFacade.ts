@@ -7,4 +7,9 @@ export class EventoFacade {
   static async find(): Promise<Evento[]> {
     return await EventoFacade.service.find();
   }
+
+  // obtiene un evento de forma aleatoria de la base de datos con bajo costo computacional
+  static async findRandom(): Promise<Evento> {
+    return await EventoFacade.service.findRandom();
+  }
 }

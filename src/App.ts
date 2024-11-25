@@ -36,7 +36,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
 
     // initialize resources
-    // this.initializeDatabase();
+    this.initializeDatabase();
   }
 
   private initializeSeeders() {
@@ -67,11 +67,11 @@ class App {
     const ds: DataSource = getDataSource();
     const db = await ds.initialize();
     console.log(
-      `+ Database connected [${
-        db.options.database
-      }]- ${db.options.type.toUpperCase()} v${db.driver.version}`
+      `+ Database connected [${db.options.database}] on ${
+        process.env.DB_HOST
+      } - ${db.options.type.toUpperCase()} v${db.driver.version}`
     );
-    this.initializeSeeders();
+    // this.initializeSeeders();
   }
 
   public listen(): void {

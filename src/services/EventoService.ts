@@ -17,4 +17,10 @@ export class EventoService {
   async findById(id: number): Promise<Evento> {
     return await this.repository.find({ where: { id } })[0];
   }
+
+  async findRandom(): Promise<Evento> {
+    return await this.repository.query(
+      "SELECT * FROM evento ORDER BY RAND() LIMIT 1"
+    )[0];
+  }
 }
