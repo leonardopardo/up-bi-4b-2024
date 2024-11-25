@@ -11,6 +11,6 @@ export class CategoriaService {
   }
 
   async find(): Promise<Categoria[]> {
-    return this.repository.find();
+    return await this.repository.find();
   }
 }

@@ -11,7 +11,7 @@ export class ClienteService {
   }
 
   async find(): Promise<Cliente[]> {
-    return this.repository.find();
+    return await this.repository.find();
   }
 
   async findById(id: number): Promise<Cliente> {

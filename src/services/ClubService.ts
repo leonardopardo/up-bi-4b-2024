@@ -11,7 +11,7 @@ export class ClubService {
   }
 
   async find(): Promise<Club[]> {
-    return this.repository.find();
+    return await this.repository.find();
   }
 
   async findById(id: number): Promise<Club> {

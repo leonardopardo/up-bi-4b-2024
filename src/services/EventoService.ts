@@ -11,7 +11,7 @@ export class EventoService {
   }
 
   async find(): Promise<Evento[]> {
-    return this.repository.find();
+    return await this.repository.find();
   }
 
   async findById(id: number): Promise<Evento> {

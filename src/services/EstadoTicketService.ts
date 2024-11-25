@@ -11,7 +11,7 @@ export class EstadoTicketService {
   }
 
   async find(): Promise<EstadoTicket[]> {
-    return this.repository.find();
+    return await this.repository.find();
   }
 
   async findById(id: number): Promise<EstadoTicket> {
