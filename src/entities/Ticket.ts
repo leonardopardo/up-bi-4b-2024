@@ -44,8 +44,8 @@ export class Ticket {
   @DeleteDateColumn()
   deleted_at: Date;
 
-  @OneToMany(() => Transaccion, (transaccion) => transaccion.ticket)
-  transacciones: Transaccion[];
+  // @OneToMany(() => Transaccion, (transaccion) => transaccion.ticket)
+  // transacciones: Transaccion[];
 
   @ManyToOne(() => Evento, (evento) => evento.tickets)
   @JoinColumn({ name: "evento_id" })

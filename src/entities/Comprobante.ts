@@ -45,6 +45,6 @@ export class Comprobante {
   @JoinColumn({ name: "cliente_id" })
   cliente: Cliente;
 
-  @OneToMany(() => Transaccion, (transaccion) => transaccion.comprobante)
-  transacciones: Transaccion[];
+  // @OneToMany(() => Transaccion, (transaccion) => transaccion.comprobante)
+  // transacciones: Transaccion[];
 }

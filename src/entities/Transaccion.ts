@@ -19,7 +19,7 @@ export class Transaccion {
   @Column({ type: "int" })
   cliente_id: number;
 
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true })
   comprobante_id: number;
 
   @Column({ type: "int" })
@@ -31,7 +31,7 @@ export class Transaccion {
   @Column({ type: "int" })
   estado_transaccion_id: number;
 
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true })
   ticket_id: number;
 
   @Column({ type: "decimal", precision: 10, scale: 2 })
@@ -40,17 +40,17 @@ export class Transaccion {
   @CreateDateColumn()
   fecha_transaccion: Date;
 
-  @ManyToOne(() => Ticket, (ticket) => ticket.id)
-  @JoinColumn({ name: "ticket_id" })
-  ticket: Ticket;
+  // @ManyToOne(() => Ticket, (ticket) => ticket.id)
+  // @JoinColumn({ name: "ticket_id" })
+  // ticket: Ticket;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.transacciones)
   @JoinColumn({ name: "cliente_id" })
   cliente: Cliente;
 
-  @ManyToOne(() => Comprobante, (comprobante) => comprobante.transacciones)
-  @JoinColumn({ name: "comprobante_id" })
-  comprobante: Comprobante;
+  // @ManyToOne(() => Comprobante, (comprobante) => comprobante.transacciones)
+  // @JoinColumn({ name: "comprobante_id" })
+  // comprobante: Comprobante;
 
   @ManyToOne(
     () => TipoComprobante,
