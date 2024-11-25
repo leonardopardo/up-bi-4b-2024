@@ -6,7 +6,6 @@ import { ClienteSeeder } from "./ClienteSeeder";
 import { ClubSeeder } from "./ClubSeeder";
 import { DeporteTipoSeeder } from "./DeporteTipoSeeder";
 import { DeporteSeeder } from "./DeporteSeeder";
-import { PredioSeeder } from "./PredioSeeder";
 import { ZonaSeeder } from "./ZonaSeeder";
 import { ItemSeeder } from "./ItemSeeder";
 import { EstadoTicketSeeder } from "./EstadoTicketSeeder";
